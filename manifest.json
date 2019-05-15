@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "MtgTools for chrome",
+  "description": "MtgTools for chrome, 自动把金鱼牌表翻译成中文，更多功能欢迎使用微信小程序“MtgTools”",
+  "version": "0.0.1",
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "unlimitedStorage",
+    "https://*.mtggoldfish.com/*"
+  ],
+  "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+   },
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "jquery-3.3.1.min.js",
+        "translate.js"
+      ],
+      "matches": [
+        "https://www.mtggoldfish.com/*"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
