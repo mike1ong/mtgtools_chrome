@@ -1,4 +1,3 @@
-console.log('external scripts loaded.')
 sendMessageBack = function(strAction, dicData, callback){
     chrome.extension.sendMessage({'action': strAction, 'data': dicData}, callback);
 }
@@ -10,7 +9,7 @@ loadTranslate = function () {
 			localres = local.data;
 		}
 		let cardlist = []
-		let names = $("table.home-sidebar-table:gt(0) td:not(.text-right) a");		
+		let names = $("table.home-sidebar-table:gt(0) td:not(.text-right) a");
 		for (let i = 0; i < names.length; i++) {
 			let cardname = names[i].innerText.trim()
 			if (cardname) {
