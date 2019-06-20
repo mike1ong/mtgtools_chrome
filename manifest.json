@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "MtgTools for chrome",
   "description": "MtgTools for chrome, 更多功能欢迎使用微信小程序“MtgTools”",
-  "version": "0.0.1",
+  "version": "0.1",
   "update_url": "http://upext.chrome.360.cn/intf.php?method=ExtUpdate.query",
   "permissions": [
     "tabs",
