@@ -8,11 +8,10 @@
     "webRequest",
     "webRequestBlocking",
     "<all_urls>",
-    "unlimitedStorage",
-    "https://*.mtggoldfish.com/*"
+    "unlimitedStorage"
   ],
   "background": {
-        "scripts": ["background.js"],
+        "scripts": ["js\background.js"],
         "persistent": true
    },
   "browser_action": {
@@ -21,11 +20,21 @@
   "content_scripts": [
     {
       "js": [
-        "jquery-3.3.1.min.js",
-        "translate.js"
+        "js\jquery-3.3.1.min.js",
+        "js\mtggoldfish.js"
       ],
       "matches": [
         "https://www.mtggoldfish.com/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "js": [
+        "js\jquery-3.3.1.min.js",
+        "js\mtgstocks.js"
+      ],
+      "matches": [
+        "https://www.mtgstocks.com/*"
       ],
       "run_at": "document_start"
     }
