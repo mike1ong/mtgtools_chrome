@@ -22,7 +22,11 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
         }
         return {cancel:false};
     },
-    {urls: ["<all_urls>"]},
+    {urls: ["https://www.mtggoldfish.com/*",
+            "https://www.mtgstocks.com/*",
+            "https://www.hareruyamtg.com/*",
+            "https://mtgdecks.net/*",
+            "https://www.mtgtop8.com/*"]},
     ["blocking"]
 );
     
