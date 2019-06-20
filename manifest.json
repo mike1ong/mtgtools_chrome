@@ -11,7 +11,7 @@
     "unlimitedStorage"
   ],
   "background": {
-        "scripts": ["js\background.js"],
+        "scripts": ["js/background.js"],
         "persistent": true
    },
   "browser_action": {
@@ -20,8 +20,8 @@
   "content_scripts": [
     {
       "js": [
-        "js\jquery-3.3.1.min.js",
-        "js\mtggoldfish.js"
+        "js/jquery-3.3.1.min.js",
+        "js/mtggoldfish.js"
       ],
       "matches": [
         "https://www.mtggoldfish.com/*"
@@ -30,8 +30,8 @@
     },
     {
       "js": [
-        "js\jquery-3.3.1.min.js",
-        "js\mtgstocks.js"
+        "js/jquery-3.3.1.min.js",
+        "js/mtgstocks.js"
       ],
       "matches": [
         "https://www.mtgstocks.com/*"

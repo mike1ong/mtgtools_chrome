@@ -2,6 +2,7 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
         let url = details.url;
         if (url.indexOf('ajax.googleapis.com/ajax/libs')>=0) {
         	url = details.url.replace('ajax.googleapis.com/ajax/libs', 'libs.cdnjs.net');
+        	return {redirectUrl: url};
         } else {
         	let result = 0
 	        result += url.indexOf('embed.twitch.tv') + 1
@@ -18,7 +19,7 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
 	    		return {cancel:true};
 	    	}
         }
-        return {redirectUrl: url};
+        return {cancel:false};
     },
     {urls: ["<all_urls>"]},
     ["blocking"]
