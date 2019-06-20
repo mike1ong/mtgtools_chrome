@@ -37,6 +37,16 @@
         "https://www.mtgstocks.com/*"
       ],
       "run_at": "document_start"
+    },
+    {
+      "js": [
+        "js/jquery-3.3.1.min.js",
+        "js/hareruya_jp.js"
+      ],
+      "matches": [
+        "https://www.hareruyamtg.com/ja/deck/*"
+      ],
+      "run_at": "document_start"
     }
   ]
 }
