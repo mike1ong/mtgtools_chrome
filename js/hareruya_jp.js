@@ -28,7 +28,7 @@ loadTranslate = function () {
 	let cardlist = []
 	let names = $("div.deckSearch-deckList__deckList__container__text a");
 	for (let i = 0; i < names.length; i++) {
-	    let cardname = names[i].innerText;
+		let cardname = names[i].innerText;
 		if (cardname) {
 			cardname = cardname.replace(/《/,"").replace(/》/,"").trim();
 			cardlist.push(cardname)

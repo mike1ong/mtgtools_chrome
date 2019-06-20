@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>MtgTools For Chrome</title>
+    <link rel="stylesheet" type="text/css" href="popup.css" />
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+  </head>
+
+  <body>
+    <div style="display: flex">
+        <div class="pageTitle">MtgTools For Chrome</div>
+        <div class="version">Ver0.0.1</div>
+    </div>
+    
+    <hr align="left" width="240" color=#4D90FE size="1">
+    <div class="qryBox">
+      <input id="cardName" type="text" name="cardName" placeholder="请输入卡牌名称">
+      <input id="cardBtn" type="button" value="查询">
+    </div>
+    <div class="qryEngine">
+        <input type="radio" id="r1" name="engine" value="1" checked/><label for="r1">旅法师营地</label>
+        <input type="radio" id="r2" name="engine" value="2" /><label for="r2">Scryfall</label>
+        <input type="radio" id="r3" name="engine" value="3" /><label for="r3">Gatherer</label>
+        <input type="radio" id="r4" name="engine" value="4" /><label for="r4">IG2</label>
+    </div>
+
+    <div class="urlNavigation">
+      <div class="naviTitle">常用网址导航</div>
+      <div class="naviBody">
+        <div class="naviColumn">
+          <div class="naviBlock">
+            <div class="blockTitle">
+              资讯
+            </div>
+            <div class="blockBody">
+              <div class="naviItem">
+                <a href="https://www.iyingdi.com" target="_blank">旅法师营地</a>
+              </div>
+              <div class="naviItem">
+                <a href="https://www.mtggoldfish.com/" target="_blank">金鱼</a>
+              </div>
+              <div class="naviItem">
+                <a href="https://www.mtgstocks.com/interests" target="_blank">MtgStocks</a>
+              </div>
+              <div class="naviItem">
+                <a href="http://www.starcitygames.com/" target="_blank">StarCityGames</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="naviBlock">
+              <div class="blockTitle">
+                规则、文档
+              </div>
+              <div class="blockBody">
+                <div class="naviItem">
+                  <a href="https://wiki.mtgjudge.cn/" target="_blank">万智牌裁判Wiki</a>
+                </div>
+                <div class="naviItem">
+                  <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/banned-restricted" target="_blank">禁限牌表</a>
+                </div>
+                <div class="naviItem">
+                  <a href="https://apps.mtgjudge.cn/" target="_blank">Judge Apps</a>
+                </div>
+
+              </div>
+            </div>
+        </div>
+
+        <div class="naviColumn">
+          <div class="naviBlock">
+            <div class="blockTitle">
+              套牌
+            </div>
+            <div class="blockBody">
+              <div class="naviItem">
+                <a href="https://mtgdecks.net/Standard" target="_blank">MTGDECKS</a>
+              </div>
+              <div class="naviItem">
+                <a href="https://www.mtgtop8.com/" target="_blank">MtgTOP8</a>
+              </div>
+              <div class="naviItem">
+                <a href="https://www.hareruyamtg.com/ja/deck/" target="_blank">晴れる屋</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="naviBlock">
+              <div class="blockTitle">
+                其他
+              </div>
+              <div class="blockBody">
+                <div class="naviItem">
+                  <a href="http://tappedout.net/mtg-draft-simulator/" target="_blank">模拟轮抓</a>
+                </div>
+                <div class="naviItem">
+                  <a href="https://deckstats.net/" target="_blank">DeckStats</a>
+                </div>
+                <div class="naviItem">
+                  <a href="http://www.mtgeloproject.net/blog.php" target="_blank">MTG Elo Project</a>
+                </div>
+                <div class="naviItem">
+                  <a href="https://magic.wizards.com/en/MTGO/articles/archive/magic-online/legacy-cube-cardlist" target="_blank">Legacy CUBE</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="flex-grow: 1"></div>
+      <div>
+        QQ机器人：2847133270
+      </div>
+      <div class="logoTips">
+        欢迎使用微信小程序“MtgTools”
+      </div>
+    </div>
+  </body>
+</html>

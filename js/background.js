@@ -1,30 +1,31 @@
 chrome.webRequest.onBeforeRequest.addListener(function (details) {
         let url = details.url;
         if (url.indexOf('ajax.googleapis.com/ajax/libs')>=0) {
-        	url = details.url.replace('ajax.googleapis.com/ajax/libs', 'libs.cdnjs.net');
-        	return {redirectUrl: url};
+            url = details.url.replace('ajax.googleapis.com/ajax/libs', 'libs.cdnjs.net');
+            return {redirectUrl: url};
         } else {
-        	let result = 0
-	        result += url.indexOf('embed.twitch.tv') + 1
-	    	result += url.indexOf('translate.google.com/translate_a/element.js') + 1
-	    	result += url.indexOf('apis.google.com/js/platform.js') + 1
-	    	result += url.indexOf('connect.facebook.net/en_US') + 1
-	    	result += url.indexOf('platform.twitter.com/widgets.js') + 1
-	    	result += url.indexOf('static.ads-twitter.com/uwt.js') + 1
-	    	result += url.indexOf('data.adsrvr.org') + 1
-	    	result += url.indexOf('match.adsrvr.org') + 1
-	    	result += url.indexOf('.google.com') + 1
-	    	result += url.indexOf('ib.adnxs.com') + 1
-	    	if (result > 0) {
-	    		return {cancel:true};
-	    	}
+            let result = 0
+            result += url.indexOf('embed.twitch.tv') + 1
+            result += url.indexOf('translate.google.com/translate_a/element.js') + 1
+            result += url.indexOf('googlesyndication.com') + 1
+            result += url.indexOf('apis.google.com/js/platform.js') + 1
+            result += url.indexOf('connect.facebook.net/en_US') + 1
+            result += url.indexOf('platform.twitter.com/widgets.js') + 1
+            result += url.indexOf('static.ads-twitter.com/uwt.js') + 1
+            result += url.indexOf('data.adsrvr.org') + 1
+            result += url.indexOf('match.adsrvr.org') + 1
+            result += url.indexOf('.google.com') + 1
+            result += url.indexOf('ib.adnxs.com') + 1
+            if (result > 0) {
+                return {cancel:true};
+            }
         }
         return {cancel:false};
     },
     {urls: ["<all_urls>"]},
     ["blocking"]
 );
-	
+    
 /**
  * 监听content_script发送的消息
  */
