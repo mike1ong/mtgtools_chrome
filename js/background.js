@@ -1,3 +1,6 @@
+$.ajaxSetup({ 
+    async : false 
+});
 chrome.webRequest.onBeforeRequest.addListener(function (details) {
 		let url = details.url;
 		let flag = false;
@@ -14,7 +17,19 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
 	    if (flag) {
 	    	return {redirectUrl: url};
 	    } else {
-	    	return {cancel:false};
+	    	let result = 0
+	        result += url.indexOf('embed.twitch.tv') + 1
+	        result += url.indexOf('translate.google.com/translate_a/element.js') + 1
+	        result += url.indexOf('googlesyndication.com') + 1
+	        result += url.indexOf('apis.google.com/js/platform.js') + 1
+	        result += url.indexOf('connect.facebook.net/en_US') + 1
+	        result += url.indexOf('platform.twitter.com/widgets.js') + 1
+	        result += url.indexOf('static.ads-twitter.com/uwt.js') + 1
+	        result += url.indexOf('data.adsrvr.org') + 1
+	        result += url.indexOf('match.adsrvr.org') + 1
+	        result += url.indexOf('.google.com') + 1
+	        result += url.indexOf('ib.adnxs.com') + 1
+	        return {cancel:result > 0};
 	    }
 	},
 	{urls: ["<all_urls>"],
@@ -28,30 +43,6 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
         "xmlhttprequest", 
         "other"
     ]},
-    ["blocking"]
-);
-chrome.webRequest.onBeforeRequest.addListener(function (details) {
-        let url = details.url;
-        let result = 0
-        result += url.indexOf('embed.twitch.tv') + 1
-        result += url.indexOf('translate.google.com/translate_a/element.js') + 1
-        result += url.indexOf('googlesyndication.com') + 1
-        result += url.indexOf('apis.google.com/js/platform.js') + 1
-        result += url.indexOf('connect.facebook.net/en_US') + 1
-        result += url.indexOf('platform.twitter.com/widgets.js') + 1
-        result += url.indexOf('static.ads-twitter.com/uwt.js') + 1
-        result += url.indexOf('data.adsrvr.org') + 1
-        result += url.indexOf('match.adsrvr.org') + 1
-        result += url.indexOf('.google.com') + 1
-        result += url.indexOf('ib.adnxs.com') + 1
-        return {cancel:result > 0};
-    },
-    {urls: ["https://www.mtggoldfish.com/*",
-            "https://www.mtgstocks.com/*",
-            "https://www.hareruyamtg.com/*",
-            "https://mtgdecks.net/*",
-            "https://www.mtgtop8.com/*",
-        	"https://gatherer.wizards.com/*"]},
     ["blocking"]
 );
     
@@ -76,10 +67,7 @@ chrome.extension.onMessage.addListener(function(request, _, sendResponse){
 
         // 向content_script返回信息
         sendResponse(dicReturn);
-    }
-
-    // 保存
-    if(request.action == 'save'){
+    } else if(request.action == 'save'){
         // content_script传来message
         var dicList = request.data;
         localStorage['list'] = JSON.stringify(dicList);
@@ -87,10 +75,15 @@ chrome.extension.onMessage.addListener(function(request, _, sendResponse){
         dicReturn = {'status': 200, 'data': dicList};
         // 向content_script返回信息
         sendResponse(dicReturn);
-    }
-
-    // 删除
-    if(request.action == 'clear'){
+    } else if(request.action == 'clear'){
         delete localStorage['list']
+    } else if(request.action == 'post') {
+        $.post('https://www.mtgtools.cn/Chromeext/translate', {data: request.data}, function(res) {
+            sendResponse(res);
+        })
+    } else if (request.action == 'post_jp') {        
+        $.post('https://www.mtgtools.cn/Chromeext/translatejp', {data: request.data}, function(res) {
+            sendResponse(res);
+        })
     }
-})
+});

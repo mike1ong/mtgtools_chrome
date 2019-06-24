@@ -1,3 +1,7 @@
+sendMessageBack = function(strAction, dicData, callback){
+    chrome.extension.sendMessage({'action': strAction, 'data': dicData}, callback);
+}
+
 loadTranslate = function () {
 	console.log("hareruya loadTranslate");
 	
@@ -35,7 +39,7 @@ loadTranslate = function () {
 		}
 	}
 	if (cardlist.length > 0) {
-		$.post("https://www.mtgtools.cn/Chromeext/translatejp", { data: cardlist }, function (res) {
+		sendMessageBack('post_jp', cardlist, function(res) {
 			if (res && res.code && res.code === 1) {
 				for (let i = 0; i < names.length; i++) {
 					let cardname = names[i].innerText;
