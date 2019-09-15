@@ -8,8 +8,7 @@
     "48": "icon48.png",
     "128": "icon128.png" 
   },  
-  "version": "0.1",
-  "update_url": "http://upext.chrome.360.cn/intf.php?method=ExtUpdate.query",
+  "version": "0.2",
   "permissions": [
     "tabs",
     "webRequest",
@@ -18,7 +17,7 @@
     "unlimitedStorage"
   ],
   "background": {
-        "scripts": ["js/background.js"],
+        "scripts": ["js/jquery-3.3.1.min.js", "js/background.js"],
         "persistent": true
   },
   "browser_action": {
