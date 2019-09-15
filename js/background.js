@@ -1,3 +1,6 @@
+$.ajaxSetup({ 
+    async : false 
+});
 chrome.webRequest.onBeforeRequest.addListener(function (details) {
 		let url = details.url;
 		let flag = false;
@@ -67,21 +70,13 @@ chrome.extension.onMessage.addListener(function(request, _, sendResponse){
         sendResponse(dicReturn);
     } else if(request.action == 'clear'){
         delete localStorage['list']
-    } else if(request.action == 'post_en') {
-        $.ajaxSetup({ 
-            async : false 
-            });
-        $.ajax({
-            url: 'https://www.mtgtools.cn/Chromeext/translate',
-            type: 'POST',
-            data: {'data':  request.data},
-            dataType: 'json',
-        }).then(function(res){
-            // 将正确信息返回content_script
+    } else if(request.action == 'post') {
+        $.post('https://www.mtgtools.cn/Chromeext/translate', {data: request.data}, function(res) {
             sendResponse(res);
-        }, function(){
-            // 将错误信息返回content_script
-            sendResponse({'status': 500});
-        });
+        })
+    } else if (request.action == 'post_jp') {        
+        $.post('https://www.mtgtools.cn/Chromeext/translatejp', {data: request.data}, function(res) {
+            sendResponse(res);
+        })
     }
-})
+});

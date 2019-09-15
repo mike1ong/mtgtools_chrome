@@ -73,10 +73,8 @@ loadTranslate = function () {
 			}
 		}
 		if (cardlist.length > 0) {
-			console.log(cardlist)
-            sendMessageBack('post_en', cardlist, function(res){
-				console.log(res)
-                if (res && res.code && res.code === 1) {
+			sendMessageBack('post', cardlist, function(res) {
+				if (res && res.code && res.code === 1) {
 					for (let i = 0; i < names.length; i++) {
 						let cardname = names[i].innerText.trim()
 						if (cardname) {
